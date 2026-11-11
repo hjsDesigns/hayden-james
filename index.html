@@ -1,186 +1,22 @@
 <!doctype html>
-<html lang="en">
-<head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>HJS Designs · Websites for builders and trades</title>
-<meta name="description" content="HJS Designs builds websites for builders, remodelers and the trades. You see your homepage on your phone before you pay. Hayden Stevenson, Buckley, WA · (253) 259-4558.">
-<link rel="canonical" href="https://hjsdesigns.github.io/hayden-james/">
-<meta name="theme-color" content="#06090c">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="HJS Designs">
-<meta property="og:title" content="HJS Designs · Websites for builders and trades">
-<meta property="og:description" content="You see your homepage on your phone before you pay. Text Hayden: (253) 259-4558.">
-<meta property="og:url" content="https://hjsdesigns.github.io/hayden-james/">
-<meta property="og:image" content="https://hjsdesigns.github.io/hayden-james/images/og.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="media/world-portrait.jpg" media="(max-aspect-ratio: 4/5)">
-<link rel="preload" as="image" imagesrcset="media/world-1100.jpg 1100w, media/world-1600.jpg 1600w, media/world-2400.jpg 2400w, media/world-2688.jpg 2688w" imagesizes="100vw" media="(min-aspect-ratio: 4/5)">
-<link rel="stylesheet" href="css/macbook-scroll.css?v=1">
-<link rel="stylesheet" href="css/site.css?v=4">
-<script>
-  /* js on; the laptop opener runs only when motion is welcome. If its script never arrives, fall back to the still world. */
-  (function (d) {
-    var h = d.documentElement; h.classList.add('js');
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) h.classList.add('op');
-    setTimeout(function () { if (!window.__opReady) h.classList.remove('op'); if (!window.__pageReady) h.classList.add('reveal-all'); }, 5000);
-  })(document);
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"HJS Designs",
- "description":"Websites for builders, remodelers and the trades.",
- "url":"https://hjsdesigns.github.io/hayden-james/",
- "telephone":"+1-253-259-4558","email":"hjsdesignsco@gmail.com",
- "address":{"@type":"PostalAddress","addressLocality":"Buckley","addressRegion":"WA","addressCountry":"US"},
- "founder":{"@type":"Person","name":"Hayden Stevenson"},
- "image":"https://hjsdesigns.github.io/hayden-james/images/og.jpg"}
-</script>
-</head>
-<body>
-<a class="skip" href="#what">Skip to the page</a>
-<div class="backdrop" aria-hidden="true"><img src="images/backdrop.jpg" alt="" decoding="async"><div class="grid"><i></i></div></div>
-
-<header class="site-header" id="header">
-  <a class="mark" href="#top" aria-label="HJS Designs, back to the top">HJS Designs</a>
-  <nav class="nav" id="main-nav" aria-label="Main">
-    <a href="#what">What I do</a>
-    <a href="#sample">Work</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <div class="head-right">
-    <a class="btn btn-primary btn-sm" href="sms:+12532594558">Text Hayden</a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
-  </div>
-</header>
-
-<main>
-  <!-- The opener (Hayden 10/29: "Laptop is closed and I say come on in… it pulls you into the computer… a computer world").
-       The section is tall; the stage sticks while you scroll through it. js/opener.js drives it; without JS or with reduced
-       motion it is simply the world with the name on it. -->
-  <section class="opener" id="top" aria-labelledby="name">
-    <div class="stage">
-      <canvas class="portal" aria-hidden="true"></canvas>
-      <div class="world" aria-hidden="true">
-        <picture>
-          <source media="(max-aspect-ratio: 4/5)" srcset="media/world-portrait.jpg">
-          <img class="world-img" src="media/world-1600.jpg" srcset="media/world-1100.jpg 1100w, media/world-1600.jpg 1600w, media/world-2400.jpg 2400w, media/world-2688.jpg 2688w" sizes="100vw" alt="" fetchpriority="high">
-        </picture>
-        <div class="world-shade"></div>
-      </div>
-      <div class="laptop" aria-hidden="true"></div>
-      <div class="intro">
-        <p class="intro-what" aria-hidden="true">Websites for builders and trades.</p>
-        <button class="come-in" type="button" aria-label="Come on in: open the laptop">Come on in <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-      </div>
-      <div class="lockup">
-        <div class="card-mark">
-          <h1 class="name" id="name">HJS Designs</h1>
-          <span class="rule" aria-hidden="true"></span>
-          <span class="echo" aria-hidden="true">HJS Designs</span>
-        </div>
-        <p class="what">Websites for builders and trades.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="sms:+12532594558">Text Hayden</a>
-          <a class="btn btn-ghost" href="#sample">See a sample</a>
-        </div>
-      </div>
-      <p class="concept">Seattle, as a concept render</p>
-    </div>
-  </section>
-
-  <div class="ribbon" aria-label="Who I build for">
-    <div class="ribbon-track">
-      <ul class="ribbon-list">
-        <li>Custom homes</li><li>Remodels</li><li>ADUs</li><li>Decks</li><li>Roofing</li><li>Siding</li><li>Concrete</li><li>Excavation</li><li>Welding &amp; fab</li><li>Landscaping</li>
-      </ul>
-    </div>
-  </div>
-
-  <section class="band what-band" id="what" aria-labelledby="what-h">
-    <div class="wrap split">
-      <p class="eyebrow">What I do</p>
-      <div>
-        <h2 id="what-h" class="reveal">A site that walks them through the job.</h2>
-        <p class="lede reveal">I build websites for businesses where one customer is worth a lot. Builders, remodelers and the trades come first. Your work is hard to sum up in a sentence. The site shows it the way you'd walk a client through a job, then makes calling you the easy next step.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="band sample-band" id="sample" aria-labelledby="sample-h">
-    <div class="wrap split">
-      <p class="eyebrow">A sample</p>
-      <div>
-        <h2 id="sample-h" class="reveal">Watch a house go up.</h2>
-        <p class="lede reveal">I built this sample for a made-up builder, Basalt &amp; Beam. Scroll, and the house builds itself from bare dirt to lights on.</p>
-      </div>
-    </div>
-
-    <div class="film" id="film">
-      <div class="film-stage">
-        <figure class="film-frame">
-          <canvas class="film-canvas" aria-hidden="true"></canvas>
-          <img class="film-poster" src="media/house-first.jpg" alt="A bare lot with survey stakes, the first frame of the house build" width="600" height="1064" loading="lazy">
-          <img class="film-still" src="media/house-last.jpg" alt="The finished Basalt and Beam house at dusk, windows lit" width="600" height="1064" loading="lazy">
-          <figcaption class="film-tag">Sample · Basalt &amp; Beam</figcaption>
-        </figure>
-        <ol class="film-steps">
-          <li><span class="step-n">01 · Groundwork</span><span class="step-t">It starts with your dirt.</span></li>
-          <li><span class="step-n">02 · Framing</span><span class="step-t">The house stands up.</span></li>
-          <li><span class="step-n">03 · Dried in</span><span class="step-t">Roof on, rain out.</span></li>
-          <li><span class="step-n">04 · Finishes</span><span class="step-t">Siding, cedar, stone.</span></li>
-          <li><span class="step-n">05 · Lights on</span><span class="step-t">The first night home.</span></li>
-        </ol>
-      </div>
-    </div>
-
-    <div class="wrap sample-note">
-      <p>Basalt &amp; Beam is made up, and every image is a concept render. Your site would show your real work.</p>
-    </div>
-  </section>
-
-
-  <section class="band contact-band" id="contact" aria-labelledby="contact-h">
-    <div class="wrap split">
-      <p class="eyebrow">Talk to Hayden</p>
-      <div>
-        <h2 id="contact-h" class="reveal">Text me. I'm in Buckley.</h2>
-        <p class="lede reveal">I'm Hayden Stevenson, and the person who texts you back builds your site. Send me your business name and I'll build your homepage first. You see it on your phone before you pay anything.</p>
-        <div class="reach reveal">
-          <div class="reach-row">
-            <a class="reach-big" href="tel:+12532594558">(253) 259-4558</a>
-            <div class="reach-btns">
-              <a class="btn btn-primary" href="sms:+12532594558">Text</a>
-              <a class="btn btn-ghost" href="tel:+12532594558">Call</a>
-            </div>
-          </div>
-          <div class="reach-row">
-            <a class="reach-mail" href="mailto:hjsdesignsco@gmail.com">hjsdesignsco@gmail.com</a>
-            <div class="reach-btns">
-              <a class="btn btn-ghost" href="mailto:hjsdesignsco@gmail.com?subject=Website%20for%20my%20business">Email</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="wrap foot">
-    <p class="foot-mark">HJS Designs</p>
-    <p>Buckley, Washington</p>
-    <p class="foot-small">© 2026 HJS Designs</p>
-  </div>
-</footer>
-
-<script src="js/page.js?v=4" defer></script>
-<script type="module" src="js/opener.js?v=4"></script>
-</body>
-</html>
+<title>Hayden James</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Karla:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F1E9;--ink:#15130E;--mut:#6b6558;--accent:#8C2F1F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15130E;--ink:#F4F1E9;--mut:#9a9384}}
+:root[data-theme="dark"]{--bg:#15130E;--ink:#F4F1E9;--mut:#9a9384}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Karla,-apple-system,Helvetica,Arial,sans-serif;
+min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:32px;text-align:center}
+h1{font-family:Newsreader,Georgia,serif;font-weight:400;font-size:clamp(34px,9vw,64px);margin:0;letter-spacing:-.02em}
+p{margin:0;color:var(--mut);max-width:34ch;line-height:1.6}
+.rule{width:46px;height:2px;background:var(--accent);margin:6px 0}
+small{color:var(--mut);letter-spacing:.14em;text-transform:uppercase;font-size:11px}
+</style>
+<small>Enumclaw, Washington</small>
+<h1>Hayden James</h1>
+<div class="rule"></div>
+<p>Websites for the shops, taprooms and garages a small town actually runs on. The site itself lands here shortly.</p>
