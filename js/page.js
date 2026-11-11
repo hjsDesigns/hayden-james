@@ -8,14 +8,17 @@
   // header: the small name and a backing appear once the opener is behind you
   const header = document.getElementById('header'), opener = document.querySelector('.opener');
   // and only one "Text Hayden" on screen at a time: the header's steps aside while the opener's own buttons show
-  const heroCta = document.querySelector('.lockup');
-  // (with the laptop opener running, opener.js sets cta-off in its own frame; here: the still opener, and once you're past it)
+  // one place decides it, on every scroll and resize and from the opener's own frame: hide the header's button only while the
+  // opener's buttons are showing and the opener is still on screen
+  const stage = opener.querySelector('.stage'), grid = document.querySelector('.grid i');
   const solid = () => {
     const past = opener.getBoundingClientRect().bottom <= header.offsetHeight + 1;
+    const c = window.__opReady ? parseFloat(stage.style.getPropertyValue('--c')) || 0 : 1;
     header.classList.toggle('solid', past);
-    if (past) header.classList.remove('cta-off');
-    else if (!window.__opReady) header.classList.toggle('cta-off', parseFloat(getComputedStyle(heroCta).opacity) > 0.05);
+    header.classList.toggle('cta-off', !past && c > 0.02);
+    if (grid && !reduce) grid.style.setProperty('--gy', ((scrollY * 0.35) % 64).toFixed(1) + 'px');   // the grid moves only when you scroll
   };
+  window.__syncHeader = solid;
   addEventListener('scroll', solid, { passive: true }); addEventListener('resize', solid); solid();
 
   // the navigator: on phones one Menu opens it over the page; Escape, a tap outside or a link closes it

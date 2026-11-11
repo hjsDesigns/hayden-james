@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="media/world-portrait.jpg" media="(max-aspect-ratio: 4/5)">
-<link rel="preload" as="image" href="media/world-1600.jpg" media="(min-aspect-ratio: 4/5)">
+<link rel="preload" as="image" imagesrcset="media/world-1100.jpg 1100w, media/world-1600.jpg 1600w, media/world-2400.jpg 2400w, media/world-2688.jpg 2688w" imagesizes="100vw" media="(min-aspect-ratio: 4/5)">
 <link rel="stylesheet" href="css/macbook-scroll.css?v=1">
 <link rel="stylesheet" href="css/site.css?v=1">
 <script>
@@ -45,13 +45,13 @@
 </head>
 <body>
 <a class="skip" href="#what">Skip to the page</a>
-<div class="backdrop" aria-hidden="true"><img src="media/world-1100.jpg" alt="" loading="lazy" decoding="async"><div class="grid"><i></i></div></div>
+<div class="backdrop" aria-hidden="true"><img src="images/backdrop.jpg" alt="" decoding="async"><div class="grid"><i></i></div></div>
 
 <header class="site-header" id="header">
   <a class="mark" href="#top" aria-label="HJS Designs, back to the top">HJS Designs</a>
   <nav class="nav" id="main-nav" aria-label="Main">
-    <a href="#sample">Work</a>
     <a href="#what">What I do</a>
+    <a href="#sample">Work</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="head-right">
@@ -70,7 +70,7 @@
       <div class="world" aria-hidden="true">
         <picture>
           <source media="(max-aspect-ratio: 4/5)" srcset="media/world-portrait.jpg">
-          <img class="world-img" src="media/world-1600.jpg" srcset="media/world-1100.jpg 1100w, media/world-1600.jpg 1600w, media/world-2400.jpg 2400w" sizes="100vw" alt="" fetchpriority="high">
+          <img class="world-img" src="media/world-1600.jpg" srcset="media/world-1100.jpg 1100w, media/world-1600.jpg 1600w, media/world-2400.jpg 2400w, media/world-2688.jpg 2688w" sizes="100vw" alt="" fetchpriority="high">
         </picture>
         <div class="world-shade"></div>
       </div>
@@ -150,8 +150,8 @@
     <div class="wrap split">
       <p class="eyebrow">Talk to Hayden</p>
       <div>
-        <h2 id="contact-h" class="reveal">Text the person who builds it.</h2>
-        <p class="lede reveal">I'm Hayden Stevenson, in Buckley, Washington. Send me your business name and I'll build your homepage first. You see it on your phone before you pay anything.</p>
+        <h2 id="contact-h" class="reveal">Text me. I'm in Buckley.</h2>
+        <p class="lede reveal">I'm Hayden Stevenson, and the person who texts you back builds your site. Send me your business name and I'll build your homepage first. You see it on your phone before you pay anything.</p>
         <div class="reach reveal">
           <div class="reach-row">
             <a class="reach-big" href="tel:+12532594558">(253) 259-4558</a>

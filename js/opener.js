@@ -40,22 +40,28 @@ function start() {
   const wide = () => matchMedia('(min-width: 900px) and (min-aspect-ratio: 1/1)').matches;
   const FX = 0.49, FY = 0.34;                     // where the Needle sits in the picture: the screen frames it first
 
-  // geometry, measured with the lid open and the camera at rest
+  // geometry, measured with the lid open and the camera at rest. The city lives in its own box (on phones it starts under the
+  // header and hangs from the top, so the moon clears the Menu); every number below is in that box's coordinates.
   let W = 0, H = 0, G = null, rg = 8, Sv = 1, Sg = 1, kCov = 1, K = 1, D = 1, mb = 10, dpr = 1, iw = 16, ih = 9;
+  let bx = 0, by = 0, bw = 1, bh = 1, posX = 0.5, posY = 0.5, Gb = null;
   function measure() {
     mb = parseFloat(getComputedStyle(host).getPropertyValue('--mb')) || 10;
     stage.style.setProperty('--lap-h', host.offsetHeight + 'px');
     lid.style.transform = 'rotateX(0deg)'; host.style.transform = 'translate(-50%,0)'; host.style.transformOrigin = '50% 0';
-    const st = stage.getBoundingClientRect(), r = glass.getBoundingClientRect(), hr = host.getBoundingClientRect();
+    const st = stage.getBoundingClientRect(), r = glass.getBoundingClientRect(), hr = host.getBoundingClientRect(), wb = world.getBoundingClientRect();
     W = st.width; H = st.height;
     G = { l: r.left - st.left, t: r.top - st.top, w: r.width, h: r.height }; G.cx = G.l + G.w / 2; G.cy = G.t + G.h / 2;
+    bx = wb.left - st.left; by = wb.top - st.top; bw = wb.width; bh = wb.height;
+    Gb = { cx: G.cx - bx, cy: G.cy - by };                           // the screen's centre inside the city's box
+    const op = getComputedStyle(pic).objectPosition.split(' ').map(v => parseFloat(v) / 100);
+    posX = isNaN(op[0]) ? 0.5 : op[0]; posY = isNaN(op[1]) ? 0.5 : op[1];
     rg = parseFloat(getComputedStyle(glass).borderTopLeftRadius) || 6;
     host.style.transformOrigin = `${(G.cx - (hr.left - st.left)).toFixed(1)}px ${(G.cy - (hr.top - st.top)).toFixed(1)}px`;
     iw = pic.naturalWidth || 16; ih = pic.naturalHeight || 9;
-    Sv = Math.max(W / iw, H / ih);                                   // the city filling the view
+    Sv = Math.max(bw / iw, bh / ih);                                 // the city filling its box
     Sg = Math.max(G.w / (2 * Math.min(FX, 1 - FX) * iw), G.h / (2 * Math.min(FY, 1 - FY) * ih));   // the city filling the screen, Needle centred
-    kCov = Math.max(2 * G.cx / G.w, 2 * (W - G.cx) / G.w, 2 * G.cy / G.h, 2 * (H - G.cy) / G.h);   // when the screen covers the view
-    K = kCov * 1.22;
+    kCov = Math.max(2 * Gb.cx / G.w, 2 * (bw - Gb.cx) / G.w, 2 * Gb.cy / G.h, 2 * (bh - Gb.cy) / G.h);   // when the screen covers the box
+    K = kCov * 1.06;                                                 // only a little past cover, so no frame rests on a blurry close-up
     D = Math.max(1, section.offsetHeight - stage.offsetHeight);
     dpr = Math.min(devicePixelRatio || 1, 1.5);
     portal.width = Math.round(W * dpr); portal.height = Math.round(H * dpr);
@@ -84,7 +90,9 @@ function start() {
   // the city's place for a camera scale k: inside the screen (focal point on the screen's centre) or settled full view
   const cityAt = (k, settle) => {
     const sIn = Sg * k / Sv;
-    const txIn = G.cx - W / 2 - sIn * (FX - 0.5) * iw * Sv, tyIn = G.cy - H / 2 - sIn * (FY - 0.5) * ih * Sv;
+    // where the Needle is drawn in the box at rest (object-fit cover, the box's object-position), measured from the box centre
+    const fx = (bw - iw * Sv) * posX + FX * iw * Sv - bw / 2, fy = (bh - ih * Sv) * posY + FY * ih * Sv - bh / 2;
+    const txIn = Gb.cx - bw / 2 - sIn * fx, tyIn = Gb.cy - bh / 2 - sIn * fy;
     const s = sIn + (1 - sIn) * settle, tx = txIn * (1 - settle), ty = tyIn * (1 - settle);
     return `translate(${tx.toFixed(1)}px,${ty.toFixed(1)}px) scale(${s.toFixed(4)})`;
   };
@@ -109,8 +117,8 @@ function start() {
 
     if (b <= 0) { world.style.clipPath = 'inset(50% 50% 50% 50%)'; world.style.opacity = '0'; }
     else {
-      const hw = G.w * k / 2, hh = G.h * k / 2;                      // the screen's rectangle at this camera scale
-      const t = Math.max(0, G.cy - hh), l = Math.max(0, G.cx - hw), r = Math.max(0, W - (G.cx + hw)), bo = Math.max(0, H - (G.cy + hh));
+      const hw = G.w * k / 2, hh = G.h * k / 2;                      // the screen's rectangle at this camera scale, in the box
+      const t = Math.max(0, Gb.cy - hh), l = Math.max(0, Gb.cx - hw), r = Math.max(0, bw - (Gb.cx + hw)), bo = Math.max(0, bh - (Gb.cy + hh));
       world.style.clipPath = (t + l + r + bo) > 0.5 ? `inset(${t.toFixed(1)}px ${r.toFixed(1)}px ${bo.toFixed(1)}px ${l.toFixed(1)}px round ${(rg * k).toFixed(1)}px)` : 'none';
       world.style.opacity = cf.toFixed(3);
     }
@@ -123,7 +131,7 @@ function start() {
     stage.style.setProperty('--cv', c > 0 ? 'visible' : 'hidden');
     stage.style.setProperty('--pe', a > 0.2 ? 'none' : 'auto');
     stage.classList.toggle('moving', a > 0.15);
-    header.classList.toggle('cta-off', c > 0.02);                    // one "Text Hayden" on screen at a time, set in the same frame
+    if (window.__syncHeader) window.__syncHeader();                  // the header decides its own button, from this same frame's --c
   }
   let raf = 0;
   const onScroll = () => { if (!raf) raf = requestAnimationFrame(frame); };
